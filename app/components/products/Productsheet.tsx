@@ -1,3 +1,5 @@
+"use client";
+
 import { cuttext } from "@/utils/cuttext";
 import { Typeprice } from "@/utils/typeprice";
 import { Rating } from "@mui/material";
