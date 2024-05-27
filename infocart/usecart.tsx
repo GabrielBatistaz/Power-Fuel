@@ -7,11 +7,13 @@ type CartcontextoType = {
     Carttotalqtd: number;
     Totalquantiacart: number;
     Productsheets: ProductsheetType[] | null;
-    handleAddProducttocart: (product: ProductsheetType) => void
-    handleRemoverProdutocart: (product: ProductsheetType) => void
-    handleaumentarqtd: (product: ProductsheetType) => void
-    handlediminuirqtd: (product: ProductsheetType) => void
-    handleLimparCart: () => void
+    handleAddProducttocart: (product: ProductsheetType) => void;
+    handleRemoverProdutocart: (product: ProductsheetType) => void;
+    handleaumentarqtd: (product: ProductsheetType) => void;
+    handlediminuirqtd: (product: ProductsheetType) => void;
+    handleLimparCart: () => void;
+    paymentIntent: string | null;
+    handleSetPaymentIntent: (val: string | null) => void;
 }
 
 export const Cartcontexto = createContext<CartcontextoType | null>(null);
@@ -24,15 +26,16 @@ export const Cartcontextoprovider = (props: Props) => {
     const [Carttotalqtd, setcartotalqtd] = useState(0);
     const [Totalquantiacart, setTotalquantiacart] = useState(0)
     const [Productsheets, setProductsheets] = useState<ProductsheetType[] | null>(null);
-    
-    console.log('qtd', Carttotalqtd)
-    console.log('total', Totalquantiacart)
+    const [paymentIntent, setPaymentIntent] = useState<string | null>(null)
 
     useEffect(() => {
         const Itemscart: any = localStorage.getItem('PowerFuelItems')
         const Psheets: ProductsheetType[] | null = JSON.parse(Itemscart)
+        const PowerFuelPaymentIntent: any = localStorage.getItem('PowerFuelPaymentIntent')
+        const paymentIntent: string | null = JSON.parse(PowerFuelPaymentIntent)
 
-        setProductsheets(Psheets)
+        setProductsheets(Psheets);
+        setPaymentIntent(paymentIntent);
     }, []);
 
 
@@ -139,6 +142,11 @@ export const Cartcontextoprovider = (props: Props) => {
     
     }, [Productsheets]) ;
 
+    const handleSetPaymentIntent = useCallback((val: string | null) => {
+        setPaymentIntent(val);
+        localStorage.setItem("PowerFuelPaymentIntent", JSON.stringify(val));
+    }, [paymentIntent]);
+
     const value = {
         Carttotalqtd,
         Productsheets,
@@ -148,6 +156,8 @@ export const Cartcontextoprovider = (props: Props) => {
         handleaumentarqtd,
         handlediminuirqtd,
         handleLimparCart,
+        paymentIntent,
+        handleSetPaymentIntent,
     };
 
     return <Cartcontexto.Provider value={value}  {...props} />

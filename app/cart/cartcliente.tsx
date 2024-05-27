@@ -8,9 +8,17 @@ import Titulo from "../components/titulo";
 import Botao from "../components/botao";
 import Itemconteudo from "./itemconteudo";
 import { Typeprice } from "@/utils/typeprice";
+import { SafeUser } from "@/tipos";
+import { useRouter } from "next/navigation";
 
-const Cartcliente = () => { 
+interface CartclienteProps{
+    UsuarioLogado: SafeUser | null;
+}
+
+const Cartcliente:React.FC<CartclienteProps> = ({UsuarioLogado}) => { 
     const { Productsheets, handleLimparCart, Totalquantiacart } = Usecart();
+
+    const router = useRouter()
 
     if(!Productsheets || Productsheets.length === 0) {
         return(
@@ -50,7 +58,12 @@ const Cartcliente = () => {
                 <span>{Typeprice(Totalquantiacart)}</span>
                 </div>
                 <p className="text-slate-500">Fretes e Taxas calculados na finalização da compra</p>
-                <Botao label="Checkout" onClick={() => {}} />
+                
+                <Botao 
+                label={UsuarioLogado ? "Checkout" : "Logar para Checkout"} 
+                outline= {UsuarioLogado ? false : true}
+                onClick={() => {UsuarioLogado ? router.push('/checkout') : router.push('/login')}} />
+
                 <Link href={"/"} className="text-slate-500 flex items-center gap-1 mt-2">
                     <MdArrowBack />
                     <span>Continuar Compras</span>

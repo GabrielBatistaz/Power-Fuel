@@ -1,13 +1,16 @@
+import { getUsuarioLogado } from "@/acoes/getUsuarioLogado";
 import Container from "../components/container";
 import Encobrir from "../components/encobrir";
 import Formlogin from "./formlogin";
 
 
-const Login = () => {
+const Login = async() => {
+    const UsuarioLogado = await getUsuarioLogado();
+
     return ( 
         <Container>
             <Encobrir>
-                <Formlogin />
+                <Formlogin UsuarioLogado = {UsuarioLogado} />
             </Encobrir>
         </Container>
      );

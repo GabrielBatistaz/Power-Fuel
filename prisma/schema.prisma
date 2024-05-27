@@ -7,20 +7,6 @@ generator client {
   provider = "prisma-client-js"
 }
  
-model User {
-  id            String          @id @default(auto()) @map("_id") @db.ObjectId
-  name          String?
-  email         String?         @unique
-  emailVerified DateTime?
-  image         String?
-  hashedPassword String?
-  createdAt     DateTime        @default(now())
-  updateAT      DateTime        @updatedAt
-  role          Role            @default(USER)
-  accounts      Account[]
-  
-}
- 
 model Account {
   id                String  @id @default(auto()) @map("_id") @db.ObjectId
   userId            String  @db.ObjectId
@@ -35,14 +21,90 @@ model Account {
   id_token          String? @db.String
   session_state     String?
  
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
- 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
  
   @@unique([provider, providerAccountId])
 }
  
+model User {
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  name          String?
+  email         String?         @unique
+  emailVerified DateTime?
+  image         String?
+  hashedPassword String?
+  createdAt     DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  role          Role            @default(USER)
+  accounts      Account[]
+  orders        Order[]
+  reviews       Review[]
+}
+
+model Product{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  nome String
+  descricao String
+  preco Float
+  marca String
+  categoria String
+  inEstoque Boolean
+  images Image[]
+  reviews Review[]
+}
+
+model Review{
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  productId String @db.ObjectId
+  rating Int
+  comentario String
+  createdDate DateTime @default(now())
+
+  product Product @relation(fields: [productId],references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Order{
+  id            String          @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  amount Float
+  currency String
+  status String
+  statusEntrega String?
+  createDate DateTime @default(now())
+  intencaodePagamentoId String @unique
+  products ProductsheetType[]
+  address Address?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+type ProductsheetType {
+    id String
+    nome String
+    descricao String
+    categoria String
+    marca String
+    Imgselecionada Image
+    quantidade Int
+    preco Float
+}
+
+type Image{
+  cor String
+  codigocor String
+  image String
+}
+
+type Address{
+  city String
+  country String
+  line1 String
+  line2 String?
+  codigo_postal String
+  state String
+}
 
 enum Role{
     USER

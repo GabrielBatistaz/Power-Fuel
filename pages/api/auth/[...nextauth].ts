@@ -1,12 +1,12 @@
-import NextAuth from "next-auth";
+"use client";
+import NextAuth, { AuthOptions } from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
 import prisma from "@/bibliotecas/prismadb";
 import CredentialsProviders from "next-auth/providers/credentials";
 import bcrypt from 'bcrypt';
 
-
-export default NextAuth({
+export const OpcoesAutenticacao: AuthOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [
         GoogleProvider({
@@ -14,20 +14,20 @@ export default NextAuth({
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
         }),
         CredentialsProviders({
-            name: 'credentials',
+            name: "credentials",
             credentials: {
                 email: {
-                    label: 'email',
-                    type: 'text',
+                    label: "email",
+                    type: "text",
                 },
                 password: {
-                    label: 'password',
-                    type: 'password',
+                    label: "password",
+                    type: "password",
                 },
             },
             async authorize(credentials) {
-                if(!credentials?.email || !credentials.password) {
-                    throw new Error('Email ou senha inválidos')
+                if (!credentials?.email || !credentials.password) {
+                    throw new Error("Email ou senha inválidos");
                 }
 
                 const user = await prisma.user.findUnique({
@@ -35,28 +35,30 @@ export default NextAuth({
                         email: credentials.email
                     }
                 })
-                if(!user || !user?.hashedPassword) {
-                    throw new Error('Email ou senha inválidos')
+                if (!user || !user?.hashedPassword) {
+                    throw new Error("Email ou senha inválidos");
                 }
 
-                const isPasswordCorrect = await bcrypt.compare(
+                const isCorrectPassword = await bcrypt.compare(
                     credentials.password,
                     user.hashedPassword
                 )
 
-                if (!isPasswordCorrect) {
-                    throw new Error('Email ou senha inválidos')
+                if (!isCorrectPassword) {
+                    throw new Error("Email ou senha inválidos");
                 }
                 return user;
             }
         }),
     ],
     pages: {
-        signIn:'/login'
+        signIn: "/login",
     },
-    debug: process.env.NODE_ENV === 'development',
-    session:{
-        strategy: 'jwt'
+    debug: process.env.NODE_ENV === "development",
+    session: {
+        strategy: "jwt",
     },
-    secret: process.env.NEXTAUTH_SECRET
-});
+    secret: process.env.NEXTAUTH_SECRET,
+}
+
+export default NextAuth(OpcoesAutenticacao);

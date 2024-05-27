@@ -1,6 +1,8 @@
+import Image from 'next/image'
 import Container from './components/container';
 import Homebanner from './components/nav/homebanner';
 import { products } from '@/utils/products';
+import { cuttext } from '@/utils/cuttext';
 import Productsheet from './components/products/Productsheet';
 
 

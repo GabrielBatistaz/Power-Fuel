@@ -13,17 +13,18 @@ export const metadata: Metadata = {
   description: 'Suplements Store',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
+
   return (
     <html lang="en">
       <body className={`${poppins.className}text-slate-700`}>
         <Toaster toastOptions={{
-          style:{background: "green", color:"white"},
-        }}/>
+          style: { background: "green", color: "white" },
+        }} />
         <Cartprovedor>
           <div className="flex flex-col min-h-screen">
             <Navbar />
