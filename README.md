@@ -105,6 +105,18 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
+## Learn More
+To learn more about the various tools and frameworks used in this project, take a look at the following resources:
+
+- [React Icons](https://react-icons.github.io/react-icons/) - Documentation for react-icons.
+- [Material-UI](https://mui.com/) Documentation - Get started with Material-UI.
+- [Moment.js Documentation](https://momentjs.com/docs/) - Learn about Moment.js.
+- [React Hot Toast Documentation](https://react-hot-toast.com/docs) - Get started with React Hot Toast.
+- [React Hook Form Documentation](https://www.react-hook-form.com/api/) - Learn about React Hook Form.
+- [Prisma Documentation](https://www.prisma.io/docs) - Learn about Prisma features and API.
+- [Stripe Documentation](https://docs.stripe.com/) - Learn about Stripe API.
+
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
