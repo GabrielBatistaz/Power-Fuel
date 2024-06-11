@@ -1,19 +1,21 @@
-"use client";
+// "use client";
 import NextAuth, { AuthOptions } from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import GoogleProvider from "next-auth/providers/google";
 import prisma from "@/bibliotecas/prismadb";
 import CredentialsProviders from "next-auth/providers/credentials";
-import bcrypt from 'bcrypt';
 
 export const OpcoesAutenticacao: AuthOptions = {
+    
     adapter: PrismaAdapter(prisma),
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID as string,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
         }),
+        
         CredentialsProviders({
+            
             name: "credentials",
             credentials: {
                 email: {
@@ -38,7 +40,7 @@ export const OpcoesAutenticacao: AuthOptions = {
                 if (!user || !user?.hashedPassword) {
                     throw new Error("Email ou senha inválidos");
                 }
-
+                const bcrypt = require("bcrypt");
                 const isCorrectPassword = await bcrypt.compare(
                     credentials.password,
                     user.hashedPassword

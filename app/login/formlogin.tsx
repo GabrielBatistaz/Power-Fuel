@@ -52,7 +52,7 @@ const Formlogin: React.FC<FormloginProps> = ({UsuarioLogado}) => {
     };
 
     if(UsuarioLogado){
-      return <p className="text-center">Logado. Redirecionando</p>
+      return <p className="text-center"> Logado! Redirecionando</p>
     }
 
     return ( 

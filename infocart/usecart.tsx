@@ -24,15 +24,15 @@ interface Props {
 
 export const Cartcontextoprovider = (props: Props) => {
     const [Carttotalqtd, setcartotalqtd] = useState(0);
-    const [Totalquantiacart, setTotalquantiacart] = useState(0)
+    const [Totalquantiacart, setTotalquantiacart] = useState(0);
     const [Productsheets, setProductsheets] = useState<ProductsheetType[] | null>(null);
-    const [paymentIntent, setPaymentIntent] = useState<string | null>(null)
+    const [paymentIntent, setPaymentIntent] = useState<string | null>(null);
 
     useEffect(() => {
         const Itemscart: any = localStorage.getItem('PowerFuelItems')
         const Psheets: ProductsheetType[] | null = JSON.parse(Itemscart)
-        const PowerFuelPaymentIntent: any = localStorage.getItem('PowerFuelPaymentIntent')
-        const paymentIntent: string | null = JSON.parse(PowerFuelPaymentIntent)
+        const PowerFuelPaymentIntent: any = localStorage.getItem('PowerFuelPaymentIntent');
+        const paymentIntent: string | null = JSON.parse(PowerFuelPaymentIntent);
 
         setProductsheets(Psheets);
         setPaymentIntent(paymentIntent);

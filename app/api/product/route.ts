@@ -1,7 +1,7 @@
 
 import prisma from "@/bibliotecas/prismadb";
 import { NextResponse } from "next/server";
-import {getUsuarioLogado} from "@/acoes/getUsuarioLogado";
+import getUsuarioLogado from "@/acoes/getUsuarioLogado";
 
 export async function POST(request : Request) {
     const UsuarioLogado = await getUsuarioLogado();

@@ -18,7 +18,7 @@ interface CartclienteProps{
 const Cartcliente:React.FC<CartclienteProps> = ({UsuarioLogado}) => { 
     const { Productsheets, handleLimparCart, Totalquantiacart } = Usecart();
 
-    const router = useRouter()
+    const router = useRouter();
 
     if(!Productsheets || Productsheets.length === 0) {
         return(

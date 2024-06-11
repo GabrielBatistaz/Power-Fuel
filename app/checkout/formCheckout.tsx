@@ -13,12 +13,12 @@ interface FormCheckoutProps{
     handleSetPaymentSuccess:(value: boolean) => void;
 }
 
-const FormCheckout:React.FC<FormCheckoutProps> = ({clientSecret,handleSetPaymentSuccess}) => {
-    const {Carttotalqtd, handleLimparCart, handleSetPaymentIntent} = Usecart();
+const FormCheckout:React.FC<FormCheckoutProps> = ({clientSecret, handleSetPaymentSuccess}) => {
+    const {Totalquantiacart, handleLimparCart, handleSetPaymentIntent} = Usecart();
     const stripe = useStripe();
     const elements = useElements();
     const [isLoading, setIsLoading] = useState(false);
-    const formattedPrice = Typeprice(Carttotalqtd);
+    const formattedPrice = Typeprice(Totalquantiacart);
     
     useEffect(() => {
         if(!stripe){
@@ -43,18 +43,18 @@ const FormCheckout:React.FC<FormCheckoutProps> = ({clientSecret,handleSetPayment
             elements, redirect:"if_required",
         }).then(result =>{
             if(!result.error){
-                toast.success("Successo no Checkout")
+                toast.success("Successo no Checkout");
 
-                handleLimparCart()
-                handleSetPaymentSuccess(true)
-                handleSetPaymentIntent(null)
+                handleLimparCart();
+                handleSetPaymentSuccess(true);
+                handleSetPaymentIntent(null);
             }
             setIsLoading(false);
         });
     };
 
-    return <form onSubmit={handleSubmit} id="payment-form">
-            <div>
+    return (<form onSubmit={handleSubmit} id="payment-form">
+            <div className="mb-6">
                 <Titulo title="Confirme suas informações para completar o Checkout"/>
             </div>
             <h2 className="font-bold mb-2">
@@ -71,8 +71,9 @@ const FormCheckout:React.FC<FormCheckoutProps> = ({clientSecret,handleSetPayment
             <div className="py-4 text-center text-slate-700 text-xl font-bold">
                 Total:{formattedPrice}
             </div>
-            <Botao label={isLoading? "Processando" : "Pay now"} disabled={isLoading || !stripe || !elements} onClick={() => {}}/>
-        </form> ;
-}
+            <Botao label={isLoading? "Processando" : "Pagar Agora"} disabled={isLoading || !stripe || !elements} onClick={() => {}}/>
+        </form>
+    );
+};
  
 export default FormCheckout;

@@ -1,4 +1,4 @@
-import { getUsuarioLogado } from "@/acoes/getUsuarioLogado";
+import {getUsuarioLogado} from "@/acoes/getUsuarioLogado";
 import Container from "../components/container";
 import Encobrir from "../components/encobrir";
 import Formregister from "./formregister";

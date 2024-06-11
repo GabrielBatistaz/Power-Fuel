@@ -1,5 +1,5 @@
 const GerenciarOrders = () => {
-    return ( <div>gerenciar-orders</div> );
+    return  <div>gerenciar-orders</div> ;
 }
  
 export default GerenciarOrders;

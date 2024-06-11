@@ -1,4 +1,3 @@
-"use client";
 
 import Container from "../container";
 import Link from "next/link";
@@ -6,6 +5,7 @@ import { Redressed } from "next/font/google";
 import Cartcontitems from "./cartcontitems";
 import MenuUsuario from "./menuusuario";
 import { getUsuarioLogado } from "@/acoes/getUsuarioLogado";
+
 
 const redressed = Redressed({subsets: ["latin"], weight: ["400"]});
 

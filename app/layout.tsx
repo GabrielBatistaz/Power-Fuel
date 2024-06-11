@@ -1,10 +1,10 @@
-import './globals.css'
-import type { Metadata } from 'next'
-import { Poppins } from 'next/font/google'
-import Navbar from './components/nav/navbar'
-import Footer from './components/footer/footer'
-import Cartprovedor from '@/provider/cartprovider'
-import { Toaster } from 'react-hot-toast'
+import "./globals.css";
+import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
+import Navbar from "./components/nav/navbar";
+import Footer from "./components/footer/footer";
+import Cartprovedor from "@/provider/cartprovider";
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '700'] })
 

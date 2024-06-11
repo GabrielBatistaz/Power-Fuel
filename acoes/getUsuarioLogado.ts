@@ -15,7 +15,7 @@ export async function getUsuarioLogado() {
         }
         const UsuarioLogado = await prisma.user.findUnique({
             where:{
-                email: session?.user?.email
+                email: session?.user?.email,
             },
         });
 
