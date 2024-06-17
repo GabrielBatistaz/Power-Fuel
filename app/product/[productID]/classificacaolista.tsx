@@ -10,7 +10,8 @@ interface ClassificacaolistaProps{
 } 
 
 const Classificacaolista:React.FC<ClassificacaolistaProps> = ({product}) => {
-    return <div>
+    if(product.reviews.length === 0) return null
+    return (<div>
         <Headerclassificacao titulo="Avaliação Produto" />
         <div className="text-sm mt-2">
             {product.reviews && product.reviews.map((review:any) => {
@@ -31,7 +32,7 @@ const Classificacaolista:React.FC<ClassificacaolistaProps> = ({product}) => {
                 
             })}
         </div>
-    </div>;
+    </div>);
 }
  
 export default Classificacaolista;

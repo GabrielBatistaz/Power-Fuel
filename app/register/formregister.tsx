@@ -39,6 +39,14 @@ const Formregister: React.FC<FormregisterProps> = ({ UsuarioLogado }) => {
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setisLoading(true);
 
+    // Verificação de domínio de e-mail válido
+    const emailDomain = data.email.split("@")[1];
+    if (emailDomain !== "gmail.com") {
+      toast.error('Por favor, use um e-mail do Gmail');
+      setisLoading(false);
+      return;
+    }
+
     try {
       const response = await axios.post('/api/register', data, {
         headers: {
@@ -56,7 +64,7 @@ const Formregister: React.FC<FormregisterProps> = ({ UsuarioLogado }) => {
         });
 
         if (callback?.ok) {
-          router.push('/cart');
+          router.push('/');
           router.refresh();
           toast.success('Logado');
         } else if (callback?.error) {

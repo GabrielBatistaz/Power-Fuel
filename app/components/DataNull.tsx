@@ -1,9 +1,9 @@
-interface DataNullProps{
+interface DataNullProps {
     title: string;
 }
 
-const DataNull:React.FC<DataNullProps> = ({title}) =>{
-    return(
+const DataNull: React.FC<DataNullProps> = ({ title }) => {
+    return (
         <div className="w-full h-[50vh] flex items-center justify-center text-xl md:text-2xl">
             <p className="font-medium">{title}</p>
         </div>

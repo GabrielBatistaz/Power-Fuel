@@ -29,7 +29,7 @@ const Formlogin: React.FC<FormloginProps> = ({UsuarioLogado}) => {
 
     useEffect(() => {
       if(UsuarioLogado){
-        router.push('/cart');
+        router.push('/');
         router.refresh();
       }
     }, []);
@@ -41,7 +41,7 @@ const Formlogin: React.FC<FormloginProps> = ({UsuarioLogado}) => {
         }).then((callback) => {
           setisLoading(false);
           if (callback?.ok) {
-            router.push("/cart");
+            router.push("/");
             router.refresh();
             toast.success("Logado");
         }

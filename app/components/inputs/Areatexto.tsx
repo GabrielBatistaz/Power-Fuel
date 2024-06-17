@@ -26,6 +26,6 @@ const AreaTexto: React.FC<AreaTextoProps> = ({id, label, disabled, required, reg
         </div>
 
      );
-}
+};
  
 export default AreaTexto;

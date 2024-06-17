@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     const UsuarioLogado = await getUsuarioLogado();
 
     if (!UsuarioLogado) {
-        return NextResponse.json({ error: "Não Autorizado" }, { status: 401 });
+        return NextResponse.error();
     }
     const body = await request.json();
     const { items, intencao_pagamento_id } = body;
@@ -48,17 +48,17 @@ export async function POST(request: Request) {
                 prisma.order.findFirst({
                     where: { intencaodePagamentoId: intencao_pagamento_id },
                 }),
-                await prisma.order.update({
+                prisma.order.update({
                     where: { intencaodePagamentoId: intencao_pagamento_id },
                     data: {
                         amount: total,
-                        products: items
+                        products: items,
                     },
                 }),
             ]);
 
             if (!existing_order) {
-                return NextResponse.json({ error: "Intenção de Pagamento Inválida" }, { status: 400 });
+                return NextResponse.error();
             }
             return NextResponse.json({ paymentIntent: updated_intent });
         }
@@ -78,4 +78,5 @@ export async function POST(request: Request) {
 
         return NextResponse.json({ paymentIntent });
     }
+    return NextResponse.error();
 }

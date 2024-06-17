@@ -63,7 +63,7 @@ const FormCheckout:React.FC<FormCheckoutProps> = ({clientSecret, handleSetPaymen
             <AddressElement 
             options={{
                 mode: "shipping",
-                allowedCountries: ["BR", "US"],
+                allowedCountries: ["BR"],
             }}
             />
             <h3 className="font-bold mt-4 mb-2">Informações de Pagamento</h3>

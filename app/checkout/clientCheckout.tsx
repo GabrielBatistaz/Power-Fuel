@@ -70,13 +70,13 @@ const ClientCheckout = () => {
                 <FormCheckout clientSecret={clientSecret} handleSetPaymentSuccess={handleSetPaymentSuccess} />
             </Elements>
         )}
-        {loading && <div className="text-center">Carregando Checkout...</div>}
+        {loading && (<div className="text-center">Carregando Checkout...</div>)}
         {error && (<div className="text-center text-rose-500">Algo deu errado</div>)}
         {paymentSuccess && (
             <div className="flex items-center flex-col gap-4">
                 <div className="text-teal-500 text-center">Sucesso no Pagamento</div>
                 <div className="max-w-[220px] w-full">
-                    <Botao label="Ver seus pedidos" onClick={() => router.push('/order')} />
+                    <Botao label="Ver seus pedidos" onClick={() => router.push('/orders')} />
                 </div>
             </div>
         )}

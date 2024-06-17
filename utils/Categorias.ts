@@ -1,28 +1,34 @@
-import { MdStorefront } from "react-icons/md";
-
+import { MdStorefront, MdCardTravel } from "react-icons/md";
+import { FaBottleWater } from "react-icons/fa6";
+import { PiJarLabelBold, PiJarLabelDuotone , PiJarLabelFill  } from "react-icons/pi";
+import { RiFlashlightLine } from "react-icons/ri";
 export const categorias =[
     {
-        label: "All",
+        label: "Todos",
         icon: MdStorefront
     },
     {
         label: "Whey Protein",
-        icon: MdStorefront
+        icon: PiJarLabelBold
     },
     {
         label: "Creatina",
-        icon: MdStorefront
+        icon: PiJarLabelDuotone
     },
     {
-        label: "Hipercalorico",
-        icon: MdStorefront
+        label: "Hipercalórico",
+        icon: PiJarLabelFill 
     },
     {
         label: "Coqueteleira",
-        icon: MdStorefront
+        icon: FaBottleWater
     },
     {
         label: "Pré-Treino",
-        icon: MdStorefront
+        icon: RiFlashlightLine
+    },
+    {
+        label: "Acessório",
+        icon: MdCardTravel
     },
 ]

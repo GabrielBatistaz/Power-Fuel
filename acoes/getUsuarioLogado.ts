@@ -17,6 +17,7 @@ export async function getUsuarioLogado() {
             where:{
                 email: session?.user?.email,
             },
+            include:{orders: true},
         });
 
         if(!UsuarioLogado){
