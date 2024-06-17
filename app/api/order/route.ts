@@ -8,7 +8,7 @@ export async function PUT(request: Request) {
     
     if(!UsuarioLogado) return NextResponse.error();
 
-    if(UsuarioLogado.role != "ADMIN"){
+    if(!UsuarioLogado || UsuarioLogado.role != "ADMIN"){
         return NextResponse.error();
     }
     const body = await request.json();

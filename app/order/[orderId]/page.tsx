@@ -10,7 +10,7 @@ interface Iprams {
 const Order = async ({params } : {params: Iprams}) => {
     const order = await getOrderbyId(params)
 
-    if(!order) return <DataNull title="Sem Pedidos"/>
+    if(!order) return <DataNull title="Sem Pedidos"></DataNull>;
 
     return ( 
     <div className="p-8">

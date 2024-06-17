@@ -4,9 +4,6 @@ import { getUsuarioLogado } from "@/acoes/getUsuarioLogado";
 import DataNull from "@/app/components/DataNull";
 import getOrders from "@/acoes/getOrders";
 
-
-
-
 const GerenciarOrders = async() => {
 
     const orders = await getOrders();

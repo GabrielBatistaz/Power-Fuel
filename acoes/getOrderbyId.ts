@@ -1,7 +1,7 @@
 import prisma from "@/bibliotecas/prismadb";
 
 interface IParams{
-    orderId?: string
+    orderId?: string;
 }
 
 export default async function getOrderbyId(params: IParams) {

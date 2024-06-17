@@ -54,7 +54,7 @@ const GerenciarOrdersClient: React.FC<GerenciarOrdersClientProps> = ({ orders })
                 return (<div>{params.row.paymentStatus === "pendente" ? (
                     <Status text="pendente" icon={MdAccessTimeFilled} background="bg-slate-200" cor="text-slate-700" />
                 ) : params.row.paymentStatus === "completo" ? (
-                    <Status text="completo" icon={MdDone} background="bg-purple-200" cor="text-purple-700" />
+                    <Status text="completo" icon={MdDone} background="bg-green-200" cor="text-green-700" />
                 ) : (
                 <></>
                 )}

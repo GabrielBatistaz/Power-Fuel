@@ -17,10 +17,10 @@ const NavAdm = () => {
                         <NavAdmItems label="Summary" icon={MdDashboard} selected={pathname === "/admin"}></NavAdmItems>
                     </Link>
                     <Link href="/admin/adicionar-produtos">
-                        <NavAdmItems label="Adicionar Productos" icon={MdLibraryAdd} selected={pathname === "/admin/adicionar-produtos"}></NavAdmItems>
+                        <NavAdmItems label="Adicionar Produtos" icon={MdLibraryAdd} selected={pathname === "/admin/adicionar-produtos"}></NavAdmItems>
                     </Link>
                     <Link href="/admin/gerenciar-produtos">
-                        <NavAdmItems label="Gerenciar Products" icon={MdDns} selected={pathname === "/admin/gerenciar-produtos"}></NavAdmItems>
+                        <NavAdmItems label="Gerenciar Produtos" icon={MdDns} selected={pathname === "/admin/gerenciar-produtos"}></NavAdmItems>
                     </Link>
                     <Link href="/admin/gerenciar-orders">
                         <NavAdmItems label="Gerenciar Pedidos" icon={MdFormatListBulleted} selected={pathname === "/admin/gerenciar-orders"}></NavAdmItems>

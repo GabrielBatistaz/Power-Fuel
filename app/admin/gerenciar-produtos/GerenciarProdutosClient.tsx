@@ -65,7 +65,7 @@ const GerenciarProdutosClient: React.FC<GerenciarProdutosClientProps> = ({ produ
                     <div className="flex justify-between gap-3 w-full">
                         <AcoesGerenciamento icon={MdCached} onClick={() => { handleMudarEstoque(params.row.id, params.row.inEstoque); }} />
                         <AcoesGerenciamento icon={MdDelete} onClick={() => { handleDeletar(params.row.id, params.row.images) }} />
-                        <AcoesGerenciamento icon={MdRemoveRedEye} onClick={() => { router.push(`product/${params.row.id}`) }} />
+                        <AcoesGerenciamento icon={MdRemoveRedEye} onClick={() => { router.push(`/product/${params.row.id}`) }} />
 
                     </div>
                 );
@@ -126,10 +126,10 @@ const GerenciarProdutosClient: React.FC<GerenciarProdutosClientProps> = ({ produ
                     columns={columns}
                     initialState={{
                         pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
+                            paginationModel: { page: 0, pageSize: 10 },
                         },
                     }}
-                    pageSizeOptions={[5, 10]}
+                    pageSizeOptions={[10, 10]}
                     checkboxSelection
                     disableRowSelectionOnClick
                 />
