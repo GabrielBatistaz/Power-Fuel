@@ -41,15 +41,15 @@ const ClientOrder: React.FC<ClientOrderProps> = ({ orders }) => {
 
     const columns: GridColDef[] = [
         { field: "id", headerName: "ID", width: 225 },
-        { field: "customer", headerName: "Customer name", width: 130 },
+        { field: "customer", headerName: "Nome", width: 130 },
         {
-            field: "amount", headerName: "Amount", width: 130,
+            field: "amount", headerName: "Total", width: 130,
             renderCell: (params) => {
                 return (<div className="font-semibold text-slate-800">{params.row.amount}</div>);
             },
         },
         {
-            field: "paymentStatus", headerName: "Payment Status", width: 130,
+            field: "paymentStatus", headerName: "Status de Pagamento", width: 130,
             renderCell: (params) => {
                 return (<div>{params.row.paymentStatus === "pendente" ? (
                     <Status text="pendente" icon={MdAccessTimeFilled} background="bg-slate-200" cor="text-slate-700" />
@@ -76,7 +76,7 @@ const ClientOrder: React.FC<ClientOrderProps> = ({ orders }) => {
                 </div>);
             },
         },
-        { field: "date", headerName: "Date", width: 225 },
+        { field: "date", headerName: "Data ", width: 225 },
         {
             field: "action", headerName: "Ações", width: 150,
             renderCell: (params) => {
@@ -100,7 +100,7 @@ const ClientOrder: React.FC<ClientOrderProps> = ({ orders }) => {
                     columns={columns}
                     initialState={{
                         pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
+                            paginationModel: { page: 0, pageSize: 10 },
                         },
                     }}
                     pageSizeOptions={[5, 10]}

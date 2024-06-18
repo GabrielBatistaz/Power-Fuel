@@ -70,7 +70,7 @@ const ClientCheckout = () => {
                 <FormCheckout clientSecret={clientSecret} handleSetPaymentSuccess={handleSetPaymentSuccess} />
             </Elements>
         )}
-        {loading && (<div className="text-center">Carregando Checkout...</div>)}
+        {loading && <div className="text-center">Carregando Checkout...</div>}
         {error && (<div className="text-center text-rose-500">Algo deu errado</div>)}
         {paymentSuccess && (
             <div className="flex items-center flex-col gap-4">

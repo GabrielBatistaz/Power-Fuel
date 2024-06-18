@@ -21,10 +21,6 @@ type ResumoDataType = {
 
 const Resumo: React.FC<ResumoProps> = ({ orders, products, users }) => {
     const [resumoData, setresumoData] = useState<ResumoDataType>({
-        sale: {
-            label: "Total sale",
-            digit: 0
-        },
         products: {
             label: "Total Produtos",
             digit: 0
@@ -51,11 +47,6 @@ const Resumo: React.FC<ResumoProps> = ({ orders, products, users }) => {
         setresumoData((prev) => {
             let tempData = { ...prev }
 
-            const totalVendido = orders.reduce((acc, item) => {
-                if (item.status === "completo") {
-                    return acc + item.amount
-                } else return acc
-            }, 0)
 
             const paidOrders = orders.filter((order => {
                 return order.status === "completo"
@@ -64,7 +55,6 @@ const Resumo: React.FC<ResumoProps> = ({ orders, products, users }) => {
                 return order.status === "pendente"
             }))
 
-            tempData.sale.digit = totalVendido;
             tempData.orders.digit = orders.length;
             tempData.paidOrders.digit = paidOrders.length;
             tempData.unpaidOrders.digit = unpaidOrders.length;
@@ -82,7 +72,7 @@ const Resumo: React.FC<ResumoProps> = ({ orders, products, users }) => {
             <div className="mb-4 mt-8">
                 <Titulo title="Status " center />
             </div>
-            <div className="grid grid-cols-2 gap-3 max-h-50vh overflow-y-auto">
+            <div className="grid grid-cols-5 gap-3 max-h-50vh overflow-y-auto">
                 {resumoKeys && resumoKeys.map((key) => {
                     return <div key={key} className="rounded-xl border-2 p-4 flex flex-col items-center gap-2 transition">
                         <div className="text-xl md:text-4xl font-semibold">

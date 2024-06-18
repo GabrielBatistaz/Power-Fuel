@@ -46,7 +46,7 @@ const Productdetails: React.FC<ProductdetailsProps> = ({ product }) => {
     const [Productsheet, setProductsheet] =
         useState<ProductsheetType>({
             id: product.id,
-            nome: product.nome, 
+            nome: product.nome,
             descricao: product.descricao,
             categoria: product.categoria,
             marca: product.marca,
@@ -55,20 +55,20 @@ const Productdetails: React.FC<ProductdetailsProps> = ({ product }) => {
             preco: product.preco,
         })
     const router = useRouter()
-    
+
     console.log(Productsheets);
 
     useEffect(() => {
         setIsProductincart(false)
-        if(Productsheets){
+        if (Productsheets) {
             const existirIndex = Productsheets.findIndex(
                 (item) => item.id === product.id
             );
-            if(existirIndex > -1){
+            if (existirIndex > -1) {
                 setIsProductincart(true);
             }
         }
-    },[Productsheets]);
+    }, [Productsheets]);
 
     const productRating = product.reviews.reduce((acc: number, item: any) => item.rating + acc, 0) / product.reviews.length;
 
@@ -108,6 +108,9 @@ const Productdetails: React.FC<ProductdetailsProps> = ({ product }) => {
             <div className="text-justify">{product.descricao}</div>
             <Horizontal />
             <div>
+                <h1 className="font-bold text-3xl font-medium text-slate-700">R$ {product.preco}</h1>
+            </div>
+            <div>
                 <span className="font-bold">Categoria:</span> {product.categoria}
             </div>
             <div>
@@ -116,36 +119,36 @@ const Productdetails: React.FC<ProductdetailsProps> = ({ product }) => {
             <div className={product.inEstoque ? "text-teal-400" : "text-red-400"}>{product.inEstoque ? "No estoque" : "Fora de estoque"}</div>
             <Horizontal />
             {isProductincart ? (
-            <>
-            <p className="mb-2 text-slate-500 flex items-center gap-1">
-                <MdCheckCircle className="text-teal-400"/>
-                <span>Produto adicionado ao Carrinho</span>
-            </p>
-            <div className="max-w-[300px]">
-                <Botao  label="Ver Carrinho" outline onClick={() => {
-                    router.push('/cart');
-                }}
-                />
-            </div>
-            </>) : 
-            
-            (<>
-            <Setcor
-                Productsheet={Productsheet}
-                images={product.images}
-                handleCorSelecionada={handleCorSelecionada}
-            />
-            <Horizontal />
-            <Setquantidade
-                Productsheet={Productsheet} handleaumentarqtd={handleaumentarqtd} handlediminuirqtd={handlediminuirqtd}
-            />
-            <Horizontal />
-            <div className="max-w-[300px]">
-                <Botao label="Adicionar ao Carrinho" onClick={() => handleAddProducttocart(Productsheet)}
-                />
-            </div>
-            </>)}
-            
+                <>
+                    <p className="mb-2 text-slate-500 flex items-center gap-1">
+                        <MdCheckCircle className="text-teal-400" />
+                        <span>Produto adicionado ao Carrinho</span>
+                    </p>
+                    <div className="max-w-[300px]">
+                        <Botao label="Ver Carrinho" outline onClick={() => {
+                            router.push('/cart');
+                        }}
+                        />
+                    </div>
+                </>) :
+
+                (<>
+                    <Setcor
+                        Productsheet={Productsheet}
+                        images={product.images}
+                        handleCorSelecionada={handleCorSelecionada}
+                    />
+                    <Horizontal />
+                    <Setquantidade
+                        Productsheet={Productsheet} handleaumentarqtd={handleaumentarqtd} handlediminuirqtd={handlediminuirqtd}
+                    />
+                    <Horizontal />
+                    <div className="max-w-[300px]">
+                        <Botao label="Adicionar ao Carrinho" onClick={() => handleAddProducttocart(Productsheet)}
+                        />
+                    </div>
+                </>)}
+
         </div>
     </div>
 }

@@ -39,4 +39,24 @@ export const Cores = [
         codigocor: "#FFFFFF",
         image: null,
     },
+    {
+        cor: "Marrom",
+        codigocor: "#964B00",
+        image: null,
+    },
+    {
+        cor: "Roxo",
+        codigocor: "#993399",
+        image: null,
+    },
+    {
+        cor: "Laranja",
+        codigocor: "#FF8C00",
+        image: null,
+    },
+    {
+        cor: "Informação Nutricional",
+        codigocor: "#E6E6E6",
+        image: null,
+    },
 ];

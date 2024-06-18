@@ -20,8 +20,7 @@ const DetalhesOrder: React.FC<DetalhesOrderProps> = ({ order }) => {
             <div className="mt-8">
                 <Titulo title="Detalhes Do Pedido" />
             </div>
-            <div>Order ID:{order.id}</div>
-            <div>Total:{" "} <span>{Typeprice(order.amount)}</span></div>
+            <div>ID do Pedido:{order.id}</div>
             <div className="flex gap-2 items-center">
                 <div>Status de pagamento:</div>
                 <div>{order.status === "pendente" ? (<Status text="pendente" icon={MdAccessTimeFilled} background="bg-slate-200" cor="text-slate-700" />
@@ -43,7 +42,7 @@ const DetalhesOrder: React.FC<DetalhesOrderProps> = ({ order }) => {
                     )}
                 </div>
             </div>
-            <div>Date:{moment(order.createDate).fromNow()}</div>
+            <div>Data do Pedido: {moment(order.createDate).fromNow()}</div>
             <div>
                 <h3 className="font-semibold mt-4 mb-2">Produtos Pedidos</h3>
                 <div className="grid grid-cols-5 text-xs gap-4 pb-2 items-center">

@@ -20,7 +20,7 @@ const Classificacaolista:React.FC<ClassificacaolistaProps> = ({product}) => {
                        
                        <Avatar src={review?.user.image}/>
 
-                        <div className="font-bold">{review?.user.nome}</div>
+                        <div className="font-bold">{review?.user.name}</div>
                         <div className="font-light">{moment(review.createdDate).fromNow()}</div>
                     </div>
                     <div className="mt-2">

@@ -129,7 +129,7 @@ const GerenciarProdutosClient: React.FC<GerenciarProdutosClientProps> = ({ produ
                             paginationModel: { page: 0, pageSize: 10 },
                         },
                     }}
-                    pageSizeOptions={[10, 10]}
+                    pageSizeOptions={[5, 10]}
                     checkboxSelection
                     disableRowSelectionOnClick
                 />
